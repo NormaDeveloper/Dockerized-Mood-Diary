@@ -1,15 +1,25 @@
-FROM node:14-alpine
+FROM node:lts-bullseye as base 
 
 WORKDIR /app
+
+# ------------------
+FROM base as deps
 
 COPY package.json .
 COPY package-lock.json .
 
-COPY . . 
+RUN npm i --production
 
-RUN npm i
+# -----------------
 
+FROM base as runner
 
-EXPOSE  3000
+COPY . .
+COPY --from=deps /app/node_modules node_modules
+
+EXPOSE 3001
 
 CMD ["npm", "start"]
+
+
+

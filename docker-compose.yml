@@ -3,9 +3,11 @@ services:
   web:
     build: ./web
     ports: 
-      - "80:3000"
+      - "3000:80" 
     depends_on:
       - back
+    env_file:
+      - ./web/.env
   back:
     build: ./back
     ports: 
@@ -13,6 +15,8 @@ services:
 # services ---> indico contenedores
 # web sería un contenedor
 # BUILD --> indico q vas a construir la imagen que está en esta ruta, o sea, donde ser está el archivo de Dockerfile
-# PORTS: puerto que quiero mapear --> el primero es el puerto de mi ordenador y el segundo es el puerto del contenedor
+# PORTS: puerto que quiero mapear --> el primero es el puerto de mi ordenador y el segundo es el puerto del contenedor. 
+# Con NGINX la web la arranco en el puerto 80, y en mi ordenador quiero que sea el 3000  --> 3000:80
+# El caso del back lo arranco en 3001 y en mi ordenadro tb es 3001
 # depends_on → indico que levante 1º el servicio de back
 
