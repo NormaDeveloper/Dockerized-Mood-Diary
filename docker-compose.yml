@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  web:
+    build: ./web
+    ports: 
+      - "80:3000"
+    depends_on:
+      - back
+  back:
+    build: ./back
+    ports: 
+      - "3001:3001"
+# services ---> indico contenedores
+# web sería un contenedor
+# BUILD --> indico q vas a construir la imagen que está en esta ruta, o sea, donde ser está el archivo de Dockerfile
+# PORTS: puerto que quiero mapear --> el primero es el puerto de mi ordenador y el segundo es el puerto del contenedor
+# depends_on → indico que levante 1º el servicio de back
+

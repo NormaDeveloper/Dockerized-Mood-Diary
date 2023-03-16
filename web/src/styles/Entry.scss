@@ -1,0 +1,84 @@
+@import './core/variables.scss';
+
+.form {
+  border: 1px solid rgb(229, 229, 229);
+  box-shadow: 1.5px 1.5px rgb(229, 229, 229);
+  margin: 30px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 30vh;
+}
+
+.user {
+  line-height: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    text-transform: capitalize;
+    font-weight: 900;
+  }
+  &__date {
+    color: $lightText;
+    text-transform: capitalize;
+    font-size: 11px;
+  }
+
+  &__edit-icon {
+    color: rgb(165, 165, 165);
+  }
+
+  &__submit-icon {
+    color: rgb(165, 165, 165);
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  &__textarea {
+    border: solid rgb(229, 229, 229);
+    resize: none;
+    height: 65px;
+  }
+
+  &__displayText {
+    height: 65px;
+    overflow-wrap: break-word;
+  }
+}
+
+.description__label,
+.mood__title {
+  line-height: 30px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.mood-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  height: 120px;
+}
+
+.customButton {
+  width: 100%;
+  height: 20px;
+  background-color: white;
+  color: rgb(19, 124, 221);
+  font-size: 12px;
+  border: 1px solid rgb(19, 124, 221);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: rgb(19, 124, 221);
+  border: 1.5px solid rgb(19, 124, 221);
+  color: white;
+}
