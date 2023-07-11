@@ -1,7 +1,7 @@
 import moment from 'moment';
 import Entry from './Entry';
 
-function EntryList({ listOfEntries, submitUpdatedEntry, updateDescription }) {
+function EntryList({ listOfEntries, submitUpdatedEntry, updateDescription, handleDeleteEntry }) {
   const htmlListOfEntries =
     listOfEntries &&
     listOfEntries.map((entry, i) => {
@@ -16,6 +16,7 @@ function EntryList({ listOfEntries, submitUpdatedEntry, updateDescription }) {
             date={entryDate}
             listOfEntries={listOfEntries}
             updateDescription={updateDescription}
+            handleDeleteEntry={handleDeleteEntry}
           />
         </li>
       );

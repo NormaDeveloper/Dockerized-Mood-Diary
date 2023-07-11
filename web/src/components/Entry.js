@@ -1,9 +1,9 @@
 import '../styles/Entry.scss';
 import { useState } from 'react';
-import { FiEdit2 } from 'react-icons/fi';
+import { FiEdit2, FiXCircle } from 'react-icons/fi';
 import { AiOutlineSend } from 'react-icons/ai';
 
-const Entry = ({ mood, id, description, date, submitUpdatedEntry }) => {
+const Entry = ({ mood, id, description, date, submitUpdatedEntry, handleDeleteEntry }) => {
   const [editable, setEditable] = useState(true);
   const [newDescription, setNewDescription] = useState(description);
   const [newMood, setNewMood] = useState(mood);
@@ -31,6 +31,11 @@ const Entry = ({ mood, id, description, date, submitUpdatedEntry }) => {
     setEditable(!editable);
   };
 
+  // Delete functionality works just with Firestore
+  const handleDelete = (id) => {
+    handleDeleteEntry(id)
+  }
+
   return (
     <form className="form">
       <div className="user">
@@ -38,10 +43,16 @@ const Entry = ({ mood, id, description, date, submitUpdatedEntry }) => {
           <h3 className="user__title">erlich bachman</h3>
           <p className="user__date">{date}</p>
         </div>
+       
+        <div> 
+          {editable ? (
+            <FiXCircle className="user__edit-icon" onClick={()=>handleDelete(id)} /> 
+          ) : null}
 
-        {editable ? (
-          <FiEdit2 className="user__edit-icon" onClick={handleEdit} />
-        ) : null}
+          {editable ? (
+            <FiEdit2 className="user__edit-icon" onClick={handleEdit} /> 
+          ) : null}
+        </div>
 
         {!editable ? (
           <AiOutlineSend
